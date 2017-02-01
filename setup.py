@@ -16,8 +16,9 @@ def install(pkg):
     pip.main(['install', pkg])
 
 def main():
-    if not 'wget' in sys.modules:
-        install('wget')
+    install('wget')
+    install('scanip')
+    install('pcapy')
 
 if __name__ == '__main__':
     if sys.version_info<(2,7,12) or sys.version_info>=(3,0):
