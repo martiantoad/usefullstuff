@@ -17,8 +17,7 @@ def install(pkg):
 
 def main():
     install('wget')
-    install('scanip')
-    install('pcapy')
+    install('netaddr')
 
 if __name__ == '__main__':
     if sys.version_info<(2,7,12) or sys.version_info>=(3,0):
