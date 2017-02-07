@@ -1,6 +1,6 @@
 import os
 
-def main():
+def main(cmd):
     print "Command list:"
     for comd in os.listdir('us'):
         if os.path.isfile('us/'+comd):

@@ -15,7 +15,7 @@ def scaniprange((lipr)):
         else:
             print(str(item), "is Online")
 
-def main():
+def main(cmd):
     ipmi = raw_input("Enter min ip: ")
     ipma = raw_input("Enter max ip: ")
     ah = list((netaddr.iter_iprange(ipmi, ipma)))
