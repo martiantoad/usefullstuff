@@ -1,10 +1,5 @@
 import sys
 import os
-
-if sys.version_info<(2,7,12) or sys.version_info>=(3,0):
-    sys.exit('Python version must 2.7.12 or above, and also not 3')
-
-import os
 import urllib2
 try:
     import pip
