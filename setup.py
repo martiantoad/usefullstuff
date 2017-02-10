@@ -15,7 +15,7 @@ except Exception:
 
 def install(pkg):
     pip.main(['install', pkg])
-    cfg.write('installed %s' % pkg)
+    cfg.write('installed %s\n' % pkg)
 
 def main():
     install('wget')

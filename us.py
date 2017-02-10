@@ -1,6 +1,7 @@
 import os
 
 global cus
+global pymod
 
 print "UsefullStuff command line"
 cus = "user"
@@ -30,10 +31,10 @@ def procCommand(command):
                 pyf = __import__(pymod, fromlist=[''])
                 pyf.main(command[(len(pyfile[:-2])):])
                 return 0
-    for pyfile in os.listdir('math'):
-        if os.path.isfile('math/'+pyfile):
+    for pyfile in os.listdir('umath'):
+        if os.path.isfile('umath/'+pyfile):
             if pyfile[:-3] == command[:(len(pyfile[:-3]))]:
-                pymod = 'math.' + pyfile[:-3]
+                pymod = 'umath.' + pyfile[:-3]
                 pyf = __import__(pymod, fromlist=[''])
                 pyf.main(command[(len(pyfile[:-2])):])
                 return 0
