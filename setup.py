@@ -1,4 +1,5 @@
 import sys
+import os
 
 if sys.version_info<(2,7,12) or sys.version_info>=(3,0):
     sys.exit('Python version must 2.7.12 or above, and also not 3')
@@ -14,6 +15,7 @@ except Exception:
 
 def install(pkg):
     pip.main(['install', pkg])
+    cfg.write('installed %s' % pkg)
 
 def main():
     install('wget')
@@ -23,4 +25,5 @@ if __name__ == '__main__':
     if sys.version_info<(2,7,12) or sys.version_info>=(3,0):
         sys.exit('Python version must 2.7.12 or above, and also not 3')
     else:
+        cfg = open('systm/setup.cfg', 'w')
         main()
