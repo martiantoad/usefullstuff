@@ -22,6 +22,9 @@ def getCommand():
     return command
 
 def procCommand(command):
+    if command == 'cm update':
+        import systm.update
+        systm.update.main()
     if command[:2] == 'cd':
         setCus(command[3:])
         return 0
