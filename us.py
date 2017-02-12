@@ -1,4 +1,6 @@
 import os
+import sys
+from systm.exception import unknown_exception as error
 import umath.settings
 import network.settings
 import us.settings
@@ -22,9 +24,12 @@ def getCommand():
     return command
 
 def procCommand(command):
+    if command == 'exit':
+        sys.exit()
     if command == 'cm update':
         import systm.update
         systm.update.main()
+        return 0
     if command[:2] == 'cd':
         setCus(command[3:])
         return 0
@@ -50,4 +55,7 @@ def procCommand(command):
     return 1
 
 while True:
-    procCommand(getCommand())
+    try:
+        procCommand(getCommand())
+    except Exception as ex:
+        error(ex)
