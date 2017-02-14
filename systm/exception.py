@@ -1,61 +1,152 @@
+import sys
+import traceback
+
 def unknown_exception(what):
     what_str = str(what)
     try:
         what
     except AssertionError:
-        print "Exception 01 - AssertionError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 01 - AssertionError on line {} in statement {}".format(line, text)
     except AttributeError:
-        print "Exception 02 - AttributeError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 02 - AttributeError on line {} in statement {}".format(line, text)
     except EOFError:
-        print "Exception 03 - EOFError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 03 - EOFError on line {} in statement {}".format(line, text)
     except FloatingPointError:
-        print "Exception 04 - FloatingPointError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 04 - FloatingPointError on line {} in statement {}".format(line, text)
     except GeneratorExit:
         print "Exception 05 - GeneratorExit"
     except IOError:
-        print "Exception 06 - IOError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 06 - IOError on line {} in statement {}".format(line, text)
     except ImportError:
-        print "Exception 07 - ImportError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 07 - ImportError on line {} in statement {}".format(line, text)
     except IndexError:
-        print "Exception 08 - IndexError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 08 - IndexError on line {} in statement {}".format(line, text)
     except KeyError:
-        print "Exception 09 - KeyError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 09 - KeyError on line {} in statement {}".format(line, text)
     except KeyboardInterrupt:
         print "Exception 10 - KeyboardInterrupt"
     except MemoryError:
-        print "Exception 11 - MemoryError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 11 - MemoryError on line {} in statement {}".format(line, text)
     except NameError:
-        print "Exception 12 - NameError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 12 - NameError on line {} in statement {}".format(line, text)
     except NotImplementedError:
-        print "Exception 13 - NotImplementedError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 13 - NotImplementedError on line {} in statement {}".format(line, text)
     except OSError:
-        print "Exception 14 - OSError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 14 - OSError on line {} in statement {}".format(line, text)
     except OverflowError:
-        print "Exception 15 - OverflowError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 15 - OverflowError on line {} in statement {}".format(line, text)
     except ReferenceError:
-        print "Exception 16 - ReferenceError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 16 - ReferenceError on line {} in statement {}".format(line, text)
     except RuntimeError:
-        print "Exception 17 - RuntimeError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 17 - RuntimeError on line {} in statement {}".format(line, text)
     except StopIteration:
         print "Exception 18 - StopIteration"
     except SyntaxError:
-        print "Exception 19 - SyntaxError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 19 - SyntaxError on line {} in statement {}".format(line, text)
     except SystemError:
-        print "Exception 20 - SystemError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 20 - SystemError on line {} in statement {}".format(line, text)
     except SystemExit:
         print "Exception 21 - SystemExit"
     except TypeError:
-        print "Exception 22 - TypeError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 22 - TypeError on line {} in statement {}".format(line, text)
     except UnboundLocalError:
-        print "Exception 23 - UnboundLocalError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 23 - UnboundLocalError on line {} in statement {}".format(line, text)
     except UnicodeError:
-        print "Exception 24 - UnicodeError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 24 - UnicodeError on line {} in statement {}".format(line, text)
     except ValueError:
-        print "Exception 25 - ValueError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 25 - ValueError on line {} in statement {}".format(line, text)
     except WindowsError:
         print "Windows Error - Use linux"
     except ZeroDivisionError:
-        print "Exception 26 - ZeroDivisionError"
+        _, _, tb = sys.exc_info()
+        traceback.print_tb(tb)
+        tb_info = traceback.extract_tb(tb)
+        filename, line, func, text = tb_info[-1]
+        print "Exception 26 - ZeroDivisionError on line {} in statement {}".format(line, text)
     except UserWarning:
         return "Warning - User Warning"
     except DeprecationWarning:
