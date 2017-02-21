@@ -4,6 +4,9 @@ from systm.exception import unknown_exception as error
 import umath.settings
 import network.settings
 import us.settings
+import systm.log as log
+
+log.add("imported core modules")
 
 print "UsefullStuff command line"
 
@@ -54,8 +57,12 @@ def procCommand(command):
                 return 0
     return 1
 
+log.add("initialized")
+
 while True:
     try:
-        procCommand(getCommand())
+        current_command = getCommand()
+        log.add(current_command)
+        procCommand(current_command)
     except Exception as ex:
         error(ex)
