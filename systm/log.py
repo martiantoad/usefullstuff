@@ -10,8 +10,7 @@ def add(to_add):
 def print_log():
     tsc = 0
     for entery in log:
-        print entery
-        print timestamps[tsc]
+        print timestamps[tsc] + " - " + entery 
         tsc += 1
 
 def give_log():

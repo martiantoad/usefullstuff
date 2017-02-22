@@ -32,9 +32,15 @@ def procCommand(command):
     if command == 'cm update':
         import systm.update
         systm.update.main()
+        log.add("updated")
         return 0
     if command[:2] == 'cd':
         setCus(command[3:])
+        log.add("directory changed")
+        return 0
+    if command == 'log print':
+        log.print_log()
+        log.add("log printed")
         return 0
     if command[:8] != 'settings':
         for pyfile in os.listdir('us'):
@@ -42,19 +48,24 @@ def procCommand(command):
                 pymod = 'us.' + pyfile[:-3]
                 pyf = __import__(pymod, fromlist=[''])
                 pyf.main(command[(len(pyfile[:-2])):])
+                log.add(pymod + "executed")
                 return 0
         for pyfile in os.listdir('network'):
             if os.path.isfile('network/'+pyfile) and pyfile[:-3] == command[:(len(pyfile[:-3]))]:
                 pymod = 'network.' + pyfile[:-3]
                 pyf = __import__(pymod, fromlist=[''])
                 pyf.main(command[(len(pyfile[:-2])):])
+                log.add(pymod + "executed")
                 return 0
         for pyfile in os.listdir('umath'):
             if os.path.isfile('umath/'+pyfile) and pyfile[:-3] == command[:(len(pyfile[:-3]))]:
                 pymod = 'umath.' + pyfile[:-3]
                 pyf = __import__(pymod, fromlist=[''])
                 pyf.main(command[(len(pyfile[:-2])):])
+                log.add(pymod + "executed")
                 return 0
+    print "Command/Script not found"
+    log.add("command/script %s was not found" % command)
     return 1
 
 log.add("initialized")
@@ -62,7 +73,8 @@ log.add("initialized")
 while True:
     try:
         current_command = getCommand()
-        log.add(current_command)
+        log.add("user enterd command " + current_command)
         procCommand(current_command)
     except Exception as ex:
+        log.add("some exception happend, running exception manager")
         error(ex)
