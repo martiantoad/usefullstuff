@@ -35,9 +35,15 @@ def procCommand(command):
         log.add("updated")
         return 0
     if command[:2] == 'cd':
-        setCus(command[3:])
-        log.add("directory changed")
-        return 0
+        #Change this after adding user system
+	if command[:5] == 'cd ..' and len(cus) > 4:
+    	    setCus(cus.rsplit('/', 1)[0])
+	    log.add("directory changed")
+	    return 0
+	elif os.path.isdir(cus + '/' + command[3:]):
+	    setCus(cus + '/' + command[3:])
+	    log.add("directory changed")
+	    return 0
     if command == 'log print':
         log.print_log()
         log.add("log printed")
@@ -48,27 +54,29 @@ def procCommand(command):
                 pymod = 'us.' + pyfile[:-3]
                 pyf = __import__(pymod, fromlist=[''])
                 pyf.main(command[(len(pyfile[:-2])):])
-                log.add(pymod + "executed")
+                log.add(pymod + " executed")
                 return 0
         for pyfile in os.listdir('network'):
             if os.path.isfile('network/'+pyfile) and pyfile[:-3] == command[:(len(pyfile[:-3]))]:
                 pymod = 'network.' + pyfile[:-3]
                 pyf = __import__(pymod, fromlist=[''])
                 pyf.main(command[(len(pyfile[:-2])):])
-                log.add(pymod + "executed")
+                log.add(pymod + " executed")
                 return 0
         for pyfile in os.listdir('umath'):
             if os.path.isfile('umath/'+pyfile) and pyfile[:-3] == command[:(len(pyfile[:-3]))]:
                 pymod = 'umath.' + pyfile[:-3]
                 pyf = __import__(pymod, fromlist=[''])
                 pyf.main(command[(len(pyfile[:-2])):])
-                log.add(pymod + "executed")
+                log.add(pymod + " executed")
                 return 0
     print "Command/Script not found"
     log.add("command/script %s was not found" % command)
     return 1
 
 log.add("initialized")
+
+#add login prompt when user system added
 
 while True:
     try:
