@@ -6,6 +6,7 @@ import umath.settings
 import network.settings
 import us.settings
 import systm.log as log
+import wget
 
 log.add("imported core modules")
 
@@ -31,6 +32,10 @@ def procCommand(command):
     if command == 'exit':
         sys.exit()
     if command == 'cm update':
+        os.chdir('systm')
+        os.rename('update.py', 'update.py_old')
+        wget.download('https://raw.githubusercontent.com/handsomebelugawhale/usefullstuff/master/systm/update.py')
+        os.remove('update.py_old')
         import systm.update
         systm.update.main()
         log.add("updated")
@@ -109,5 +114,6 @@ while True:
         log.add("user enterd command " + current_command)
         procCommand(current_command)
     except Exception as ex:
-        log.add("some exception happend, running exception manager")
-        error(ex)
+        #log.add("some exception happend, running exception manager")
+        #error(ex)
+        print ex
