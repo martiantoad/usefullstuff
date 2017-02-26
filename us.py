@@ -1,5 +1,6 @@
 import os
 import sys
+import shutil
 from systm.exception import unknown_exception as error
 import umath.settings
 import network.settings
@@ -36,14 +37,38 @@ def procCommand(command):
         return 0
     if command[:2] == 'cd':
         #Change this after adding user system
-	if command[:5] == 'cd ..' and len(cus) > 4:
-    	    setCus(cus.rsplit('/', 1)[0])
-	    log.add("directory changed")
-	    return 0
-	elif os.path.isdir(cus + '/' + command[3:]):
-	    setCus(cus + '/' + command[3:])
-	    log.add("directory changed")
-	    return 0
+    	if command == 'cd ..' and len(cus) > 4:
+            setCus(cus.rsplit('/', 1)[0])
+            log.add("directory changed")
+    	    return 0
+    	elif os.path.isdir(cus + '/' + command[3:]):
+    	    setCus(cus + '/' + command[3:])
+    	    log.add("directory changed")
+    	    return 0
+        else:
+            print "Directory unchanged"
+            log.add("directory not changed")
+            return 0
+    if command[:6] == 'mkdir ':
+        os.makedirs(cus + '/' + command[6:])
+        log.add('made directory %s' % command[6:])
+        return 0
+    if command[:3] == 'mk ':
+        open(cus + "/" + command[3:], 'w')
+        log.add('made file %s' % command[3:])
+        return 0
+    if command[:3] == 'rm ':
+        os.remove(cus + "/" + command[3:])
+        log.add('deleted %s' % command[3:])
+        return 0
+    if command[:6] == 'rmdir ':
+        shutil.rmtree(cus + "/" + command[6:])
+        log.add('deleted %s' % command[6:])
+        return 0
+    if command == 'dir':
+        print cus
+        log.add('printed cus')
+        return 0
     if command == 'log print':
         log.print_log()
         log.add("log printed")
