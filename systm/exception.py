@@ -2,6 +2,8 @@ import sys
 import traceback
 from log import add as log
 
+#WIP
+
 def unknown_exception(what):
     what_str = str(what)
     try:
