@@ -1,14 +1,13 @@
 import os
 
 def main(cmd):
-    print "Command list:"
-    for comd in os.listdir('us'):
-        if os.path.isfile('us/'+comd):
-            print comd[:-3].upper()
-    for comd in os.listdir('network'):
-        if os.path.isfile('us/'+comd) and comd.endswith('.py'):
-            print comd[:-3].upper()
-
-if __name__ == '__main__':
-    os.chdir('..')
-    main()
+    print "exit - This command exits the command line"
+    print "cd <directory> - This changes your directory"
+    print "mkdir <directory> - This makes a directory"
+    print "rmdir <directory> - This deletes a directory"
+    print "mk <filename> - This makes a file"
+    print "rm <filename> - This deletes a file"
+    print "dir - This prints your current directory"
+    print "log print - This prints the log"
+    print "<script> <*args> - This runs a script"
+ 

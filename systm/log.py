@@ -20,3 +20,13 @@ def give_log():
         entery_timestamp = [entery, timestamps[tsc]]
         formatted_log.append(entery_timestamp)
     return formatted_log
+
+class sublog():
+    def __init__(self, logname):
+        self.name = logname
+        self.log = []
+    def add(entery):
+        self.log.append(entery)
+    def get():
+        for item in self.log:
+            print item
